@@ -300,8 +300,8 @@ footer::before {
   top: -8px;
   left: 0; right: 0;
   height: 4px;
-  background: var(--cyan);
-  box-shadow: 0 0 14px var(--cyan);
+  background: var(--pink);
+  box-shadow: 0 0 14px var(--pink);
 }
 
 footer a {
