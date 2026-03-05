@@ -21,7 +21,7 @@
         alt="rosemakesgames"
       />
       <div class="header-text">
-        <h1>rosemakesgames</h1>
+        <h1 id="title">rosemakesgames</h1>
         <p class="tagline">learning godot &amp; blender.<br/>making things &amp; sharing them.</p>
         <div class="header-links">
           <a class="itch-link" href="https://rosemakesgames.itch.io" target="_blank" rel="noopener">
@@ -172,5 +172,30 @@
     <p>made by <a href="https://rosemakesgames.itch.io" target="_blank" rel="noopener">rosemakesgames</a></p>
   </footer>
 
+  <script>
+    const h1 = document.getElementById('title');
+    const text = h1.textContent;
+    h1.textContent = '';
+    const spans = Array.from(text).map(ch => {
+      const s = document.createElement('span');
+      s.textContent = ch;
+      s.className = 'h1-letter';
+      h1.appendChild(s);
+      return s;
+    });
+
+    spans.forEach((span, i) => {
+      span.addEventListener('mouseenter', () => {
+        spans.forEach((s, j) => {
+          const dist = Math.abs(i - j);
+          s.dataset.dist = dist <= 4 ? dist : 5;
+        });
+      });
+    });
+
+    h1.addEventListener('mouseleave', () => {
+      spans.forEach(s => delete s.dataset.dist);
+    });
+  </script>
 </body>
 </html>
